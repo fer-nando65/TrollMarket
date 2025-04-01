@@ -15,7 +15,7 @@ TrollMarket adalah sebuah proyek mini e-commerce yang dikembangkan menggunakan f
 
 * Backend: Spring Boot
 
-* Frontend: Native HTML CSS JS yang terhubung dengan backend melalui REST API
+* Frontend: Native HTML, CSS, dan JS yang terhubung dengan backend melalui REST API
 
 * Database: SQL Server
 
@@ -31,7 +31,7 @@ TrollMarket adalah sebuah proyek mini e-commerce yang dikembangkan menggunakan f
 
 🛒 Manajemen Produk dan Pesanan
 
-* ✅ CRUD (Create, Read, Update, Delete) untuk produk
+* ✅ CRUD (Create, Read, Update, Delete) untuk semua service
 * ✅ Manajemen pesanan dan detail transaksi
 * ✅ Proses checkout dan pengelolaan keranjang belanja
 
