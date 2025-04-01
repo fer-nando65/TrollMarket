@@ -1,6 +1,6 @@
 # TrollMarket - Mini E-Commerce Platform 🚀
 
-<h3>README Translation</h3>
+<h3>README Terjemahan</h3>
 <ul>
   <li><a href="https://github.com/fer-nando65/TrollMarket/blob/master/README.md">English</a></li>
   <li><a href="https://github.com/fer-nando65/TrollMarket/blob/master/README.id.md">Indonesia</a></li>
