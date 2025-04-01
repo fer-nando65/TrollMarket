@@ -1,0 +1,39 @@
+.admin-form-section {
+  margin-bottom: 20px;
+  padding-right: 60%;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.admin-form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center; /* Align items vertically center */
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  flex: 0 0 160px; /* Set a fixed width for labels */
+  margin-right: 10px; /* Space between label and input */
+}
+
+.form-group input {
+  flex: 1; /* Allow input to take remaining space */
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-start; /* Align buttons to the left */
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com" lang="en">
+
+<head>
+    <div th:replace="~{layout :: head}"></div>
+    <link rel="stylesheet" th:href="@{/resources/css/cart.css}">
+</head>
+
+<body>
+    <header th:replace="~{layout :: header}"></header>
+    <nav th:replace="~{layout :: nav}"></nav>
+
+    <h1 class="title">Cart</h1>
+
+    <main>
+        <a th:href="@{/cart/purchaseAll(username=${#authentication.getPrincipal().getUsername()})}" class="gray-button add-new-shipment" th:classappend="${statusCart} == 'No' ? 'hide-button' : ''">Purchase All</a>
+        <section class="product-table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 100px;">Action</th>
+                        <th style="width: 150px;">Name</th>
+                        <th style="width: 100px;">Quantity</th>
+                        <th style="width: 200px;">Shipment</th>
+                        <th style="width: 100px;">Seller</th>
+                        <th style="width: 100px;">Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cart:${gridCart}" th:object="${cart}">
+                        <td>
+                            <a th:href="@{/cart/remove(username=${#authentication.getPrincipal().getUsername()},id=*{cartId})}" class="red-button delete-shipment">Remove</a>
+                        </td>
+                        <td th:text="*{merchandiseName}"></td>
+                        <td th:text="*{quantity}"></td>
+                        <td th:text="*{shipperName}"></td>
+                        <td th:text="*{sellerName}"></td>
+                        <td th:text="*{totalPrice}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>

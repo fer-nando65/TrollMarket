@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com" lang="en">
+
+<head>
+    <div th:replace="~{layout :: head}"></div>
+    <link rel="stylesheet" th:href="@{/resources/css/merchandise.css}">
+    <script th:src="@{/resources/js/infoMerch.js}" defer></script>
+</head>
+
+<body>
+    <header th:replace="~{layout :: header}"></header>
+    <nav th:replace="~{layout :: nav}"></nav>
+
+    <h1 class="title">Merchandise</h1>
+
+    <main>
+        <a class="gray-button"
+            th:href="@{/merchandise/upsert(username=${#authentication.getPrincipal().getUsername()})}">Add New
+            Product</a>
+        <section class="product-table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 300px;">Action</th>
+                        <th style="width: 150px;">Name</th>
+                        <th style="width: 100px;">Category</th>
+                        <th style="width: 100px;">Discontinue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="mer:${gridMerchandise}" th:object="${mer}">
+                        <td>
+                            <a th:href="@{/merchandise/upsert(username=${#authentication.getPrincipal().getUsername()}, id=*{merchandiseId})}"
+                                class="gray-button edit-merch">Edit</a>
+                            <a th:href="@{/merchandise/delete(username=${#authentication.getPrincipal().getUsername()}, id=*{merchandiseId})}"
+                                class="red-button delete-merch" th:classappend="*{isDeletable} == 'no' ? 'hide-button' : ''">Delete</a>
+                            <button th:id="*{merchandiseId}" class="gray-button info-merch">Info</button>
+                            <a th:href="@{/merchandise/discontinue(username=${#authentication.getPrincipal().getUsername()}, id=*{merchandiseId})}"
+                                class="gray-button discontinue-merch"
+                                th:classappend="*{discontinue} == 'Yes' ? 'hide-button' : ''">Discontinue</a>
+                        </td>
+                        <td th:text="*{merchandiseName}"></td>
+                        <td th:text="*{categoryName}"></td>
+                        <td th:text="*{discontinue}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Modal Structure Detail Info -->
+        <div id="myModalInfoMerch" class="modal">
+            <div class="modal-content">
+                <div class="content">
+                    <p>Name : <span class="name"></span></p>
+                    <p>Category : <span class="category"></span></p>
+                    <p>Description : <span class="description"></span></p>
+                    <p>Price : <span class="price"></span></p>
+                    <p>Discontinue : <span class="discontinue"></span></p>
+                </div>
+                <div class="button-container">
+                    <button class="gray-button" id="cancelButton">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

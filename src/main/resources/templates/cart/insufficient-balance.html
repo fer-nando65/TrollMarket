@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insufficient Balance</title>
+    <link rel="stylesheet" th:href="@{/resources/css/failLogin.css}">
+</head>
+
+<body>
+    <div class="failed-container">
+        <h1>Insufficient Balance</h1>
+        <p>Sorry, your balance is not enough</p>
+        <a th:href="@{/dashboard}" class="btn">Go Back to Home</a>
+    </div>
+</body>
+
+</html>

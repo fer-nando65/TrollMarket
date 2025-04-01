@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com" lang="en">
+
+<head>
+    <div th:replace="~{layout :: head}"></div>
+    <link rel="stylesheet" th:href="@{/resources/css/history.css}" />
+</head>
+
+<body>
+    <header th:replace="~{layout :: header}"></header>
+    <nav th:replace="~{layout :: nav}"></nav>
+
+    <main>
+        <section class="searching-form-section">
+            <form class="searching-form" method="get" th:attr="action=@{/history}">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <div class="form-group">
+                    <label for="seller">Seller:</label>
+                    <select name="sellerName" id="sellerName">
+                        <option selected name="sellerName" value="" id="seller">No Spesific Seller</option>
+                        <option th:each="seller:${optionSeller}" th:object="${seller}" th:name="sellerName"
+                            th:value="*{value}" th:text="*{text}" th:selected="*{selected}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="buyer">Buyer:</label>
+                    <select name="buyerName" id="buyerName">
+                        <option selected name="buyerName" id="buyer" value="">No Spesific Buyer</option>
+                        <option th:each="buyer:${optionBuyer}" th:object="${buyer}" th:name="buyerName"
+                            th:value="*{value}" th:text="*{text}" th:selected="*{selected}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="search-button">Search</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="transactions-table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Seller</th>
+                        <th>Buyer</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Shipment</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="AllHistory:${gridAllHistory}" th:object="${AllHistory}">
+                        <td th:text="*{date}"></td>
+                        <td th:text="*{sellerName}"></td>
+                        <td th:text="*{buyerName}"></td>
+                        <td th:text="*{merchandiseName}"></td>
+                        <td th:text="*{quantity}"></td>
+                        <td th:text="*{shipperName}"></td>
+                        <td th:text="*{totalPrice}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com" lang="en">
+
+<head>
+    <div th:replace="~{layout :: head}"></div>
+    <link rel="stylesheet" th:href="@{/resources/css/shop.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/errors.css}">
+    <script th:src="@{/resources/js/addCart.js}" defer></script>
+</head>
+
+<body>
+    <header th:replace="~{layout :: header}"></header>
+    <nav th:replace="~{layout :: nav}"></nav>
+
+    <h1 class="title">Shop</h1>
+
+    <main>
+        <section class="search-section">
+            <form method="get" class="search-form" th:attr="action=@{/shop}">
+                <input type="hidden" name="username" th:value="${#authentication.getPrincipal().getUsername()}">
+                <div class="form-group">
+                    <label for="merchandiseName">Name:</label>
+                    <input type="text" id="merchandiseName" name="merchandiseName" th:value="${merchandiseName}">
+                </div>
+                <div class="form-group">
+                    <label for="categoryId">Category:</label>
+                    <select name="categoryId" id="categoryId">
+                        <option selected disabled hidden>No Specific Category</option>
+                        <option th:each="category:${listCategoryShop}" th:object="${category}" th:name="categoryId"
+                            th:value="*{value}" th:text="*{text}" th:selected="*{selected}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" th:value="${description}">
+                </div>
+                <button type="submit" class="blue-button search-button">Search</button>
+            </form>
+        </section>
+
+        <section class="shop-table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 150px;">Action</th>
+                        <th style="width: 300px;">Name</th>
+                        <th style="width: 100px;">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="shop:${gridListShop}" th:object="${shop}">
+                        <td>
+                            <button th:id="*{merchandiseId}" class="gray-button add-to-cart">Add to Cart</button>
+                            <a th:id="*{merchandiseId}" class="gray-button detail-info">Detail Info</a>
+                        </td>
+                        <td th:text="*{merchandiseName}"></td>
+                        <td th:text="*{price}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <!-- Modal Structure Pop Up Cart -->
+        <div id="myModalAddCart" class="modal">
+            <div class="modal-content">
+                <form method="post" action="">
+                    <input type="hidden" name="username" id="username"
+                        th:value="${#authentication.getPrincipal().getUsername()}">
+                    <label for="amount">Quantity</label>
+                    <input type="number" id="amount" name="amount" placeholder="Masukkan jumlah">
+                    <div class="errors"><span class="span-errors amount-error"></span></div>
+
+                    <label for="shipperId">Shipment</label>
+                    <select name="shipperId" id="shipperId">
+                        <option selected disabled hidden>No Specific Shipper</option>
+                        <option th:each="shipper:${listShipperShop}" th:object="${shipper}" th:name="shipperId"
+                            th:value="*{value}" th:text="*{text}">
+                        </option>
+                    </select>
+                    <div class="errors"><span class="span-errors shipperId-error"></span></div>
+
+                    <div class="button-container">
+                        <button type="button" class="gray-button" id="addButton">Tambah</button>
+                        <button type="button" class="red-button" id="cancelButton">Batal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Structure Detail Info -->
+        <div id="myModalDetailInfo" class="modal">
+            <div class="modal-content">
+                <div class="content">
+                    <p>Name : <span class="merchandiseName"></span></p>
+                    <p>Category : <span class="category"></span></p>
+                    <p>Description : <span class="description"></span></p>
+                    <p>Price : <span class="price"></span></p>
+                    <p>Seller Name : <span class="sellerName"></span></p>
+                </div>
+                <div class="button-container">
+                    <button class="gray-button" id="cancelButtonInfo">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

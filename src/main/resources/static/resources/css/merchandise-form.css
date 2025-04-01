@@ -1,0 +1,61 @@
+.form-section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.product-form {
+  margin-bottom: 20px;
+  padding-right: 50%;
+}
+
+.form-group {
+  display: flex;
+  align-items: center; /* Align items vertically center */
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  flex: 0 0 120px; /* Set a fixed width for labels */
+  margin-right: 10px; /* Space between label and input */
+}
+
+.form-group input,
+.form-group textarea {
+  flex: 1; /* Allow input and textarea to take remaining space */
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group-discontinue input {
+  flex: none;
+}
+
+.form-group textarea {
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+.save-button:hover,
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.back-button {
+  background-color: #6c757d; /* Different color for back button */
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+p {
+  margin: 10px 0;
+}

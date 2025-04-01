@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com" lang="en">
+
+<head>
+    <div th:fragment="head">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Troll Market</title>
+
+        <link rel="icon" type="image/ico" th:href="@{/favicon.ico}" />
+        <link rel="stylesheet" th:href="@{/resources/css/normalize.css}" />
+        <link rel="stylesheet" th:href="@{/resources/css/font-awesome.css}" />
+        <link rel="stylesheet" th:href="@{/resources/css/site.css}" />
+        <link rel="stylesheet" th:href="@{/resources/css/authorization.css}" />
+        <link rel="stylesheet" th:href="@{/resources/css/responsive.css}" />
+        <script th:src="@{/resources/js/jquery-3.6.0.js}"></script>
+        <script th:src="@{/resources/js/apexcharts.js}"></script>
+    </div>
+</head>
+
+<body>
+    <header th:fragment="header">
+        <div class="logo">Troll Market</div>
+        <div class="user-info">
+            <span class="headline">Welcome, <span id="username" th:text="${#authentication.getPrincipal().getUsername()}"></span> <span th:text="${#authentication.getAuthorities()}"></span>
+            </span>
+            <form th:action="@{/logout}" method="POST">
+                <input type="hidden" />
+                <button class="signout">Sign Out</button>
+            </form>
+        </div>
+    </header>
+
+    <nav th:fragment="nav">
+        <ul class="navbar">
+            <li><a th:href="@{/dashboard}">Home</a></li>
+            <li th:if="${#authentication.getAuthorities().toArray()[0].authority} != 'Administrator'"><a th:href="@{/profile/index(username=${#authentication.getPrincipal().getUsername()})}">Profile</a></li>
+            <li th:if="${#authentication.getAuthorities().toArray()[0].authority} == 'Buyer'"><a th:href="@{/shop/index(username=${#authentication.getPrincipal().getUsername()})}">Shop</a></li>
+            <li th:if="${#authentication.getAuthorities().toArray()[0].authority} == 'Seller'"><a th:href="@{/merchandise/index(username=${#authentication.getPrincipal().getUsername()})}">Merchandise</a></li>
+            <li th:if="${#authentication.getAuthorities().toArray()[0].authority} == 'Administrator'"><a th:href="@{/shipper}">Shipment</a></li>
+            <li th:if="${#authentication.getAuthorities().toArray()[0].authority} == 'Buyer'"><a th:href="@{/cart/index(username=${#authentication.getPrincipal().getUsername()})}">My Cart</a></li>
+            <li th:if="${#authentication.getAuthorities().toArray()[0].authority} == 'Administrator'"><a th:href="@{/admin}">Admin</a></li>
+            <li th:if="${#authentication.getAuthorities().toArray()[0].authority} == 'Administrator'"><a th:href="@{/history}">History</a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>

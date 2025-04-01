@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com" lang="en">
+
+<head>
+    <div th:replace="~{layout :: head}"></div>
+    <link rel="stylesheet" th:href="@{/resources/css/shipment.css}">
+    <script th:src="@{/resources/js/upsertShipment.js}" defer></script>
+</head>
+
+<body>
+    <header th:replace="~{layout :: header}"></header>
+    <nav th:replace="~{layout :: nav}"></nav>
+
+    <h1 class="title">Shipment</h1>
+
+    <main>
+        <button class="gray-button add-new-shipment">Add New Shipment</button>
+        <section class="product-table-section">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 300px;">Action</th>
+                        <th style="width: 150px;">Name</th>
+                        <th style="width: 100px;">Price</th>
+                        <th style="width: 100px;">Stop Service</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="shipper:${gridShipper}" th:object="${shipper}">
+                        <td>
+                            <button th:id="*{shipperId}" class="gray-button edit-shipment">Edit</button>
+                            <a th:href="@{/shipper/delete(id=*{shipperId})}"
+                                class="red-button delete-shipment" th:classappend="*{isDeletable} == 'no' ? 'hide-button' : ''">Delete</a>
+                            <a th:href="@{/shipper/stopService(id=*{shipperId})}"
+                                class="gray-button stop-service-shipment" th:classappend="*{service} == 'Yes' ? 'hide-button' : ''">Stop Service</a>
+                        </td>
+                        <td th:text="*{companyName}"></td>
+                        <td th:text="*{price}"></td>
+                        <td th:text="*{service}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Modal Structure Detail Info -->
+        <div id="myModalUpsertShipment" class="modal">
+            <div class="modal-content">
+                <form action="">
+                    <input type="hidden" id="shipperId">
+                    <label>Name: </label>
+                    <input type="text" id="shipperName">
+                    <div class="errors"><span class="span-errors companyName-error"></span></div>
+
+                    <label>Price: </label>
+                    <input type="number" name="" id="shipperPrice">
+                    <div class="errors"><span class="span-errors price-error"></span></div>
+
+                    <label>Stop Service: </label>
+                    <input type="checkbox" name="" id="shipperService" value="true">
+                    <div class="button-container">
+                        <button type="button" class="gray-button" id="addButton">Tambah</button>
+                        <button type="button" class="red-button" id="cancelButton">Batal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

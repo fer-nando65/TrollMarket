@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" th:href="@{/resources/css/login.css}">
+    <script th:src="@{/resources/js/generateToken.js}" defer></script>
+</head>
+
+<body>
+    <h1>TrollMarket</h1>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form th:action="@{/authenticating}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="password" required>
+
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+                <option value="Administrator">Administrator</option>
+                <option value="Seller">Seller</option>
+                <option value="Buyer">Buyer</option>
+            </select>
+
+            <button type="submit">Sign In</button>
+        </form>
+
+        <div class="links">
+            <a th:href="@{/account/register(role='Buyer')}">Register as Buyer</a> |
+            <a th:href="@{/account/register(role='Seller')}">Register as Seller</a>
+        </div>
+    </div>
+</body>
+
+</html>

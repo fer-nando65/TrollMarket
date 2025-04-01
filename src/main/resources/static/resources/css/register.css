@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  margin: 30vh;
+  font-size: 36px;
+}
+
+.register-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.register-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.register-container label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.register-container input,
+.register-container textarea {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.register-container textarea {
+  resize: vertical;
+  height: 100px;
+  /* Adjust the height as needed */
+}
+
+.register-container button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.register-container button:hover {
+  background-color: #0056b3;
+}
+
+.register-container .back-link {
+  padding: 10px;
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.register-container .back-link:hover {
+  background-color: #5a6268;
+}
+
+.register-container .links {
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,9 @@
+.errors {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.errors .span-errors {
+  color: red;
+  font-size: 14px;
+}
