@@ -2,8 +2,8 @@
 
 <h3>README Translation</h3>
 <ul>
-  <li><a href=>English</a></li>
-  <li><a href=>Indonesia</a></li>
+  <li><a href="https://github.com/fer-nando65/TrollMarket/blob/master/README.md">English</a></li>
+  <li><a href="https://github.com/fer-nando65/TrollMarket/blob/master/README.id.md">Indonesia</a></li>
 </ul>
 <br>
 
