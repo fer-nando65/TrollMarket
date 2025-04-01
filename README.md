@@ -67,7 +67,7 @@ TrollMarket is a mini e-commerce project developed using the Spring Boot framewo
   <h2>Admin</h2>
   <li>
     <strong>Home</strong>
-    <img src="https://github.com/fer-nando65/TrollMarket/blob/master/screenshot/register.JPG">
+    <img src="https://github.com/fer-nando65/TrollMarket/blob/master/screenshot/admin_home.JPG">
   </li>
   <li>
     <strong>Shipment</strong>
